@@ -1,0 +1,78 @@
+*{ margin: 0;
+   padding: 0;
+   font-family: "Inter", sans-serif;
+   box-sizing: border-box;}
+
+h1{ font-size: 50px;}
+
+h4{ font-size: 30px}
+
+header{ background-color: rgb(187, 186, 186);
+        position: sticky;
+        width:100%;
+        top: 0px;
+        font-size: 70%;
+        height: 200px;
+        padding-top: 30px;
+        box-shadow: 0 0 10px 2px #aaa;}
+
+nav{ text-align: center;
+     display: flex;
+     justify-content: center;
+     text-decoration: none;
+     font-size: 150%;}
+
+aside{ width: 25%;
+       height: 300px;
+       font-size: 120%;
+       background-color: darkgray;
+       padding: 50px;
+       float:left;
+       box-shadow: 0 0 10px 2px #aaa;}
+
+section{ width: 75%;
+         height: 300px;
+         padding-top: 20px;
+         padding-left: 30.5%;
+         display: inline;
+         background-color: darkgrey;
+         box-shadow: 0 0 10px 2px #aaa;
+         float: left;}
+
+footer{ background-color: rgb(187, 186, 186);
+        width:100%;
+        height:463px;
+        clear: both;
+        box-shadow: 0 0 10px 2px #aaa;
+        padding: 50px;}
+
+table, tr, td, th{ border: 1px solid black;
+                   border-collapse: collapse;}
+.tab1{ width:150px;
+       height:150px;}
+
+.tab2{width:300px;
+      text-align: center;
+      height:100px}
+
+a{ text-decoration: none;
+   text-align: center;
+   margin-left: 15px;
+   color: black}
+
+a:hover{ color:chartreuse}
+
+.article{border: 4px dotted black;
+         width:40%;
+         padding: 40px;
+         text-align: center;
+         float: left;}
+
+         .article:hover{border: 4px dotted goldenrod}
+         
+.img{ width: 50%;
+      float: left;}
+
+button{ background-color: brown;}
+
+button:hover{ background-color: coral;}

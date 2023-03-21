@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - LAB 3</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h4>ZADANIE 1</h4>
+    <p id="add"></p>
+    <p id="sub"></p>
+    <p id="multi"></p>
+    <p id="div"></p>
+    <hr>
+
+    <h4>ZADANIE 2</h4>
+    <p id="ppp"></p>
+    <p id="area"></p>
+    <hr>
+
+    <h4>ZADANIE 3</h4>
+    <p id="result"></p>
+    
+    <hr>
+
+    <h4>ZADANIE 4</h4>
+    <p>Podaj pierwszą liczbę: </p>
+    <input type="text" id="n1"> <br>
+    <p>Podaj drugą liczbe: </p>
+    <input type="text" id="n2"> <br>
+    <p>Podaj trzecią liczbę: </p>
+    <input type="text" id="n3">
+    <button onClick="findMax()">ZNAJDŹ</button>
+
+    <br>
+    <p id="wynik"></p>
+    <script>
+        function findMax(){
+            var n1 = parseFloat(document.getElementById("n1").value);
+            var n2 = parseFloat(document.getElementById("n2").value);
+            var n3 = parseFloat(document.getElementById("n3").value);
+
+            var maxN = Math.max(n1,n2,n3);
+            document.getElementById("wynik").innerHTML="Największa liczba to: "+maxN; 
+            
+        }
+    </script>
+    <hr>
+
+    <h4>ZADANIE 5</h4>
+    <p>Podaj a:</p>
+    <input type="number" id="a">
+    <p>Podaj b:</p>
+    <input type="number" id="b">
+    <button onClick="NWD()">SZUKAJ NWD</button>
+    <p id="nwd"></p>
+
+    <script>
+        function NWD(a,b){
+            var a = parseFloat(document.getElementById("a").value);
+            var b = parseFloat(document.getElementById("b").value);
+            if (b === 0){
+                return a;
+                document.getElementById("nwd").innerHTML="NWD podanych liczb to"+a;
+            } else{
+                return NWD(b , a % b);
+                document.getElementById("nwd").innerHTML="NWD podanych liczb to"+b;
+            }
+           
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

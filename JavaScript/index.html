@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - LAB 3</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h4>ZADANIE 1</h4>
+    <p id="add"></p>
+    <p id="sub"></p>
+    <p id="multi"></p>
+    <p id="div"></p>
+<hr>
+
+    <h4>ZADANIE 2</h4>
+    <p id="ppp"></p>
+    <p id="area"></p>
+<hr>
+
+    <h4>ZADANIE 3</h4>
+    <p id="result"></p>
+    
+<hr>
+
+    <h4>ZADANIE 4</h4>
+    <p>Podaj pierwszą liczbę: </p>
+    <input type="text" id="n1"> <br>
+    <p>Podaj drugą liczbe: </p>
+    <input type="text" id="n2"> <br>
+    <p>Podaj trzecią liczbę: </p>
+    <input type="text" id="n3">
+    <button onClick="findMax()">ZNAJDŹ</button>
+
+    <br>
+    <p id="wynik"></p>
+    <script>
+        function findMax(){
+            var n1 = parseFloat(document.getElementById("n1").value);
+            var n2 = parseFloat(document.getElementById("n2").value);
+            var n3 = parseFloat(document.getElementById("n3").value);
+
+            var maxN = Math.max(n1,n2,n3);
+            document.getElementById("wynik").innerHTML="Największa liczba to: "+maxN; 
+            
+        }
+    </script>
+<hr>
+
+    <h4>ZADANIE 5</h4>
+    <p>Podaj a:</p>
+    <input type="number" id="a">
+    <p>Podaj b:</p>
+    <input type="number" id="b">
+    <button onClick="NWD()">SZUKAJ NWD</button><br>
+
+    <p id="nwd"></p>
+    
+    <script>
+        function nwd(a, b) {
+            if (b == 0) {
+                return a;
+            } else {
+                 return nwd(b, a % b);
+            }
+        }
+
+        function NWD(){
+            const a = parseInt(document.getElementById("a").value);
+            const b = parseInt(document.getElementById("b").value);
+            const wynik = nwd(a, b);
+            console.log(wynik);
+            document.getElementById("nwd").innerHTML = "Największy wspólny dzielnik liczb " + a + " i " + b + " to " + wynik + ".";
+        }
+    </script>
+<hr>
+    <h4>ZADANIE 6</h4>
+    <p id="student"></p>
+
+    <script>
+        const student1 = {
+            imie: "Arkadiusz",
+            nazwisko: "Cwynar",
+            wiek: 21
+        };
+
+        const student2 = {
+            imie: "Michał",
+            nazwisko: "Biesiadecki",
+            wiek: 21
+        };
+
+        const student3 = {
+            imie: "Kamil",
+            nazwisko: "Tereszkiewicz",
+            wiek: 18
+        };
+
+        student1.kierunek = "Informatyka";
+        student2.kierunek = "Programowanie";
+        student3.kierunek = "Informatyka Stosowana";
+
+        console.log(student1.imie);
+        console.log(student2.nazwisko);
+        console.log(student3.wiek);
+
+        const result = document.getElementById("student").innerHTML = "Imię studenta: " + student1.imie + "<br>"+ "Nazwisko studenta: " + student2.nazwisko + "<br>"+ "Wiek studenta: " + student3.wiek;
+    </script>
+<hr>
+    <h4>ZADANIE 7</h4>
+    <form action="" method="post">
+        <p>Imie:</p> <input type="text" id="imie"><br>
+        <p>Nazwisko: </p> <input type="text" id="nazwisko"><br>
+        <p>Wiek: </p> <input type="number" id="wiek"><br>
+        <p>Kierunek: </p> <input type="text" id="kierunek"><br>
+        <button type="button" onclick="dodaj()">Dodaj Studenta</button> <button type="reset">Wyczyść</button>
+    </form>
+    <p id="pokaz"></p>
+
+    <script>
+    //zadanie 7
+    const studenci = [];
+
+    function dodaj(){
+        const imie = document.getElementById("imie").value;
+        const nazwisko = document.getElementById("nazwisko").value;
+        const wiek = parseInt(document.getElementById("wiek").value);
+        const kierunek = document.getElementById("kierunek").value;
+    
+        const student = {
+            imie: imie,
+            nazwisko: nazwisko,
+            wiek: wiek,
+            kierunek: kierunek,
+        };
+        
+        studenci.push(student);
+        wyswietl();
+    }
+
+    function wyswietl(){
+        let wynik = "";
+        for(let i = 0; i<studenci.length; i++){
+            const student = studenci[i];
+            wynik +=  "Imię: " + student.imie + "<br>"
+                  + "Nazwisko: " + student.nazwisko + "<br>"
+                  + "Wiek: " + student.wiek + "<br>"
+                  + "Kierunek: " + student.kierunek + "<br><br>";
+        }
+        const wynikElement = document.getElementById("pokaz").innerHTML=wynik;
+    } 
+    </script>
+<hr>
+    <h4>ZADANIE 8</h4>
+    <p id="zegar"></p>
+    <script src="script.js"></script>
+</body>
+</html>

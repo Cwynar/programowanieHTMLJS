@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank</title>
+</head>
+<body>
+  <h1>Bank</h1>
+  <form>
+    <label for="accountNumber">Numer konta:</label>
+    <input type="text" id="accountNumber" name="accountNumber"><br><br>
+    <label for="pin">PIN:</label>
+    <input type="password" id="pin" name="pin"><br><br>
+    <button type="submit" onclick="login()">Zaloguj się</button>
+  </form>
+
+  <div id="userInfo"></div>
+
+  <div id="operations" style="display:none">
+    <h2>Operacje bankowe</h2>
+    <button onclick="withdraw()">Wypłać</button>
+    <button onclick="deposit()">Wpłać</button>
+  </div>
+
+  <script>
+    // Obiekt z danymi użytkowników
+const users = {
+  1234: {
+    firstName: "Jan",
+    lastName: "Kowalski",
+    balance: 5000,
+    pin: 1234
+  },
+  5678: {
+    firstName: "Anna",
+    lastName: "Nowak",
+    balance: 2000,
+    pin: 5678
+  },
+  9101: {
+    firstName: "Adam",
+    lastName: "Nowicki",
+    balance: 10000,
+    pin: 9101
+  }
+};
+
+// Funkcja logująca użytkownika i wyświetlająca jego dane
+function login() {
+  const accountNumber = prompt("Podaj numer konta");
+  const pin = prompt("Podaj PIN");
+
+  const user = users[accountNumber];
+  if (user && user.pin == pin) {
+    alert(`Witaj ${user.firstName} ${user.lastName}. Twój stan konta to ${user.balance} zł.`);
+    menu(accountNumber);
+  } else {
+    alert("Nieprawidłowy numer konta lub PIN.");
+  }
+}
+
+// Funkcja wyświetlająca menu użytkownika
+function menu(accountNumber) {
+  const choice = prompt("Wybierz operację: 1 - Wypłać gotówkę, 2 - Wpłać gotówkę");
+
+  switch (choice) {
+    case "1":
+      withdraw(accountNumber);
+      break;
+    case "2":
+      deposit(accountNumber);
+      break;
+    default:
+      alert("Nieprawidłowy wybór.");
+      menu(accountNumber);
+      break;
+  }
+}
+
+// Funkcja realizująca wypłatę gotówki
+function withdraw(accountNumber) {
+  const amount = parseInt(prompt("Podaj kwotę do wypłaty"));
+
+  const user = users[accountNumber];
+  if (user.balance >= amount) {
+    user.balance -= amount;
+    alert(`Pomyślnie wypłacono ${amount} zł. Twój nowy stan konta to ${user.balance} zł.`);
+  } else {
+    alert("Nie masz wystarczającej ilości środków na koncie.");
+  }
+
+  menu(accountNumber);
+}
+
+// Funkcja realizująca wpłatę gotówki
+function deposit(accountNumber) {
+  const amount = parseInt(prompt("Podaj kwotę do wpłaty"));
+
+  const user = users[accountNumber];
+  user.balance += amount;
+  alert(`Pomyślnie wpłacono ${amount} zł. Twój nowy stan konta to ${user.balance} zł.`);
+
+  menu(accountNumber);
+}
+
+// Wywołanie funkcji logowania
+login();
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Obliczanie większego prostokąta</title>
+  </head>
+  <body>
+    <h1>Obliczanie większego prostokąta</h1>
+    <p>Proszę wprowadzić wymiary dwóch prostokątów:</p>
+    <form>
+      <label for="width1">Szerokość 1:</label>
+      <input type="number" id="width1" name="width1"><br>
+
+      <label for="height1">Wysokość 1:</label>
+      <input type="number" id="height1" name="height1"><br>
+
+      <label for="width2">Szerokość 2:</label>
+      <input type="number" id="width2" name="width2"><br>
+
+      <label for="height2">Wysokość 2:</label>
+      <input type="number" id="height2" name="height2"><br>
+
+      <input type="button" value="Oblicz" onclick="calculateBiggerRectangle()">
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+      function calculateBiggerRectangle() {
+        const rectangle1 = {
+          width: parseInt(document.getElementById("width1").value),
+          height: parseInt(document.getElementById("height1").value)
+        };
+        const rectangle2 = {
+          width: parseInt(document.getElementById("width2").value),
+          height: parseInt(document.getElementById("height2").value)
+        };
+        const biggerRectangle = getBiggerRectangle(rectangle1, rectangle2);
+        const resultElement = document.getElementById("result");
+        resultElement.innerHTML = "Większy prostokąt ma obwód: " + 2 * (biggerRectangle.width + biggerRectangle.height);
+      }
+
+      function getBiggerRectangle(rect1, rect2) {
+        const perimeter1 = 2 * (rect1.width + rect1.height);
+        const perimeter2 = 2 * (rect2.width + rect2.height);
+
+        if (perimeter1 >= perimeter2) {
+          return rect1;
+        } else {
+          return rect2;
+        }
+      }
+    </script>
+  </body>
+</html>

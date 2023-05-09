@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>lab7</title>
+</head>
+<body>
+    <form id="myForm" method="POST">
+        <div>
+          <label for="first-name">Imię:</label>
+          <input type="text" id="first-name" name="first-name" required>
+        </div>
+        <div>
+          <label for="last-name">Nazwisko:</label>
+          <input type="text" id="last-name" name="last-name" required>
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="password">Hasło:</label>
+          <input type="password" id="password" name="password" required>
+          
+          <!--ZAD 5-->
+          <label for="password">Powtórz hasło:</label>
+          <input type="password" id="ppassword" name="ppassword" required>
+        </div>
+        <div>
+          <label for="gender">Płeć:</label>
+          <select id="gender" name="gender">
+            <option value="">Wybierz płeć</option>
+            <option value="male">Mężczyzna</option>
+            <option value="female">Kobieta</option>
+            <option value="other">Inna</option>
+          </select>
+        </div>
+        <div>
+          <label for="phone">Telefon:</label>
+          <input type="tel" id="phone" name="phone" required maxlength="9">
+        </div>
+        <div>
+          <label for="birthdate">Data urodzenia:</label>
+          <input type="date" id="birthdate" name="birthdate" required>
+        </div>
+        <div>
+          <label for="country">Kraj:</label>
+          <input type="text" id="country" name="country" pattern="[A-Za-z\s]+" required>
+        </div>
+        <button type="submit">Zapisz</button>
+        <!--zadanie 3-->
+        <p id="alert"></p>
+    </form>
+
+<script>
+const form = document.getElementById("myForm");
+const firstNameInput = document.getElementById("first-name");
+const lastNameInput = document.getElementById("last-name");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+//zad5
+const repatPasswordInput = document.getElementById("ppassword")
+const genderInput = document.getElementById("gender");
+const phoneInput = document.getElementById("phone");
+const birthdateInput = document.getElementById("birthdate");
+const countryInput = document.getElementById("country");
+
+function validateFirstName() {
+  if (firstNameInput.value === "") {
+    firstNameInput.setCustomValidity("Proszę wpisać imię.");
+  } else {
+    firstNameInput.setCustomValidity("");
+  }
+}
+
+function validateLastName() {
+  if (lastNameInput.value === "") {
+    lastNameInput.setCustomValidity("Proszę wpisać nazwisko.");
+  } else {
+    lastNameInput.setCustomValidity("");
+  }
+}
+
+function validateEmail() {
+  const email = emailInput.value;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    emailInput.setCustomValidity("Proszę wpisać poprawny adres email.");
+  } else {
+    emailInput.setCustomValidity("");
+  }
+}
+
+function validatePassword() {
+  const password = passwordInput.value;
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+  if (!passwordRegex.test(password)) {
+    passwordInput.setCustomValidity("Hasło powinno zawierać minimum 8 znaków, przynajmniej jedną małą i jedną dużą literę oraz cyfrę.");
+  } else {
+    passwordInput.setCustomValidity("");
+  }
+}
+
+//zadanie 5
+function checkPasswordMatch() {
+  const password = passwordInput.value;
+  const confirmPassword =  repatPasswordInput.value;
+
+  if (password === confirmPassword) {
+    return true;
+  } else {
+    return alert("Hasła nie są takie same");
+  }
+}
+
+//zadanie 4
+function validateBirthdate(birthdate) {
+const birthdate = birthdateInput.value;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(birthdate)) {
+    return false;
+  }
+
+  //czy data jest poprawna
+  const date = new Date(birthdate);
+  if (date.toString() === 'Invalid Date') {
+    return false;
+  }
+
+  //czy osoba jest pełnoletnia
+  const today = new Date();
+  const adultAge = 18;
+  const age = today.getFullYear() - date.getFullYear();
+
+  if (age < adultAge) {
+    return false;
+  }
+
+  return true;
+}
+
+
+form.addEventListener("submit", function(event) {
+  validateFirstName();
+  validateLastName();
+  validateEmail();
+  validatePassword();
+  if (form.checkValidity() === false) {
+    event.preventDefault();
+  } else {
+    //do zadania 3
+    document.getElementById("alert").innerHTML = "Formularz został poprawnie wypełniony!";
+  }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* Zakrąglone rogi */
+form {
+  border-radius: 10px;
+}
+
+/* Wyśrodkowanie */
+form div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Etykiety */
+label {
+  width: 150px;
+}
+
+/* Pola tekstowe */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select {
+  flex: 1;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Przycisk */
+button[type="submit"] {
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Zaznaczony checkbox */
+input[type="checkbox"]:checked + label {
+  font-weight: bold;
+}
+
+/* Komunikat o błędzie */
+p#error-message {
+  color: red;
+  margin-top: 10px;
+}

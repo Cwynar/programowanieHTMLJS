@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Powtórzenie</title>
+    <script>
+        // Definicja klasy do przechowywania danych użytkownika
+        class UserData {
+          constructor(firstName, lastName, email, info1, info2, info3) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.info1 = info1;
+            this.info2 = info2;
+            this.info3 = info3;
+          }
+        }
+    
+        // Funkcja do obliczania wynagrodzenia
+        function calculateSalary() {
+          const rate = document.getElementById("rate").value;
+          const hours = document.getElementById("hours").value;
+            
+          // Wykonaj obliczenia i zwróć wynik
+          const salary = (rate*4.65) * hours;
+          return salary;
+        }
+    
+        // Funkcja do walidacji hasła za pomocą wyrażenia regularnego
+        function validatePassword() {
+          const password = document.getElementById("password").value;
+          const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    
+          if (!passwordRegex.test(password)) {
+            alert("Hasło musi zawierać co najmniej 8 znaków, w tym jedną wielką literę, jedną małą literę i jedną cyfrę.");
+            return false;
+          }
+    
+          return true;
+        }
+    
+        // Funkcja do walidacji adresu e-mail za pomocą wyrażenia regularnego
+        function validateEmail() {
+          const email = document.getElementById("email").value;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+          if (!emailRegex.test(email)) {
+            alert("Nieprawidłowy adres e-mail.");
+            return false;
+          }
+    
+          return true;
+        }
+      </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Prosty Serwis Internetowy</h1>
+    
+        <!-- Formularz rejestracji i logowania -->
+        <h2>Rejestracja i logowanie</h2>
+        <form onsubmit="return validateEmail() && validatePassword()" action="lab9_1.html" target="_blank">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" required><br>
+    
+          <label for="password">Hasło:</label>
+          <input type="password" id="password" required><br>
+    
+          <button type="submit">Zaloguj</button>
+        </form>
+    
+        <!-- Formularz zapisywania danych użytkownika -->
+        <h2>Zapisywanie danych użytkownika</h2>
+        <form>
+          <label for="firstName">Imię:</label>
+          <input type="text" id="firstName" required><br>
+    
+          <label for="lastName">Nazwisko:</label>
+          <input type="text" id="lastName" required><br>
+    
+          <label for="info1">nr telefonu:</label>
+          <input type="text" id="info1" required><br>
+    
+          <label for="info2">e-mail:</label>
+          <input type="text" id="info2" required><br>
+    
+          <label for="info3">data urodzin:</label>
+          <input type="date" id="info3" required><br>
+    
+          <button type="submit">Zapisz</button>
+        </form>
+    
+        <!-- Kalkulator wynagrodzenia -->
+        <h2>Kalkulator wynagrodzenia</h2>
+        <form>
+          <label for="rate">Stawka (miesięczna lub godzinowa) w €:</label>
+          <input type="number" id="rate" required><br>
+    
+          <label for="hours">Liczba godzin:</label>
+          <input type="number" id="hours" required><br>
+    
+          <button type="button" onclick="document.getElementById('result').innerHTML = 'Wynagrodzenie: ' + calculateSalary() + ' zł';">Oblicz</button>
+        </form>
+        <p id="result"></p>
+    
+        <!-- Grafika z animacją -->
+        <h2>Grafika</h2>
+        <img src="js-logo.png" alt="Grafika" onclick="alert('Kliknięto na grafikę!');">
+    
+      </div>
+    </body>
+    </html>
